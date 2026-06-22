@@ -1,0 +1,15 @@
+application:
+  name: prefect
+  pods:
+  - name: app
+    image: prefecthq/prefect:3-latest
+    path: /
+    servicePorts:
+    - 4200
+    vars:
+      PREFECT_SERVER_API_HOST: "0.0.0.0"
+      PREFECT_API_DATABASE_CONNECTION_URL: "sqlite+aiosqlite:////root/.prefect/prefect.db"
+    volumes:
+    - name: prefect-data
+      mountPath: /root/.prefect
+      size: 5Gi
