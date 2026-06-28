@@ -4,11 +4,13 @@ application:
   - name: app
     image: prefecthq/prefect:3-latest
     path: /
+    command: sh -c "exec prefect server start --host 0.0.0.0 --port 4200"
     servicePorts:
     - 4200
     vars:
       PREFECT_SERVER_API_HOST: "0.0.0.0"
       PREFECT_API_DATABASE_CONNECTION_URL: "sqlite+aiosqlite:////root/.prefect/prefect.db"
+      PREFECT_UI_API_URL: "https://relaxed-weasel-prefect.cloud.nexlayer.ai/api"
     volumes:
     - name: prefect-data
       mountPath: /root/.prefect
