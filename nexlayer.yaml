@@ -2,7 +2,7 @@ application:
   name: prefect
   pods:
   - name: app
-    image: prefecthq/prefect:3-latest
+    image: mirror.gcr.io/prefecthq/prefect:3-latest
     path: /
     command: sh -c "exec prefect server start --host 0.0.0.0 --port 4200"
     servicePorts:
